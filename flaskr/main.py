@@ -1,5 +1,5 @@
 from flaskr import app
-from flask import render_template
+from flask import render_template, request, redirect, url_for
 import sqlite3
 
 DATABASE = 'database.db'
@@ -27,3 +27,19 @@ def index():
 @app.route('/form')
 def form():
     return render_template('form.html')
+
+
+@app.route('/register', methods=['POST'])
+def register():
+    title = request.form['title']
+    price = request.form['price']
+    arrival_day = request.form['arrival_day']
+
+    connect = sqlite3.connect(DATABASE)
+    connect.execute(
+        'INSERT INTO books VALUES(?, ?, ?)',
+        [title, price, arrival_day]
+    )
+    connect.commit()
+    connect.close()
+    return redirect(url_for('index'))

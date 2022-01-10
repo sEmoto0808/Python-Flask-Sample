@@ -6,6 +6,21 @@
     </head>
     <body>
         <h1>サプー書店</h1>
-        <p>新しい画面です</p>
+        <form method="post" action="{{ url_for('register') }}">
+            <table>
+                <tr>
+                    <th>入荷日</th>
+                    <th>タイトル</th>
+                    <th>金額</th>
+                </tr>
+                <tr>
+                    <td><input type="text" name="arrival_day"></td>
+                    <td><input type="text" name="title"></td>
+                    <td><input type="text" name="price"></td>
+                </tr>
+            </table>
+            <br>
+            <input type="submit" value="登録">
+        </form>
     </body>
 </html>

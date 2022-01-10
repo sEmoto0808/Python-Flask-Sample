@@ -17,3 +17,8 @@ def index():
         'index.html',
         books=books
     )
+
+
+@app.route('/form')
+def form():
+    return render_template('form.html')
